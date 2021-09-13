@@ -10,7 +10,7 @@ class Solution {
         
         var i = 2
         while i <= n {
-            let quotient: Int = i >> 1 // The quotient of dividing i by 2
+            let quotient: Int = i / 2 // The quotient of dividing i by 2
             let remainder: Int = i % 2 // The remainder of dividing i by 2
             answer.append(answer[quotient] + remainder)
             i += 1
