@@ -1,28 +1,19 @@
 class Solution {
     func countBits(_ n: Int) -> [Int] {
-        var answer: [Int] = []
+        // n == 1
+        if n == 0 {
+            return [0]
+        }
         
-        for num in 0...n {
-            let converted: String = String(num, radix: 2)
-            
-            var numberOfOne = 0
-            
-            // String의 각 element 확인
-            /*
-            for idx in 0..<converted.count {
-                if converted[idx] == '1' { 
-                    numberOfOne += 1
-                }
-            }
-            */
-            
-            converted.forEach { letter in
-                if letter == "1" {
-                    numberOfOne += 1
-                }
-            }
-            
-            answer.append(numberOfOne)
+        // n >= 1
+        var answer: [Int] = [0, 1] // Pre-calculate when i is 0 and 1
+        
+        var i = 2
+        while i <= n {
+            let quotient: Int = i >> 1 // The quotient of dividing i by 2
+            let remainder: Int = i % 2 // The remainder of dividing i by 2
+            answer.append(answer[quotient] + remainder)
+            i += 1
         }
         
         return answer
